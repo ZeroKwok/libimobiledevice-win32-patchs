@@ -1,0 +1,5 @@
+bin/
+build/
+.vs/
+.vscode/
+patch-cli.sh
