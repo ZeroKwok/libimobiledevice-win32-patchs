@@ -1,0 +1,24 @@
+#!/bin/sh
+# ./patch-cli.sh patch 生成补丁
+# ./patch-cli.sh apply 应用补丁
+
+if test $# -lt 1 ; then
+    exit 1
+fi
+echo $1: `pwd`
+
+PATCHSDIR=$(cd $(dirname $0); pwd)
+PROJECTDIR=`dirname $PATCHSDIR`
+
+if test $1 = 'patch'; then
+    cd $PATCHSDIR
+    COMMIT1=`cat ./patch-version`
+    COMMIT2=`git rev-parse HEAD`
+    git format-patch $COMMIT1..$COMMIT2 -o .
+    cp -v $PROJECTDIR/CMakeLists.txt $PATCHSDIR/CMakeLists.txt
+elif test $1 = 'apply'; then
+    cd $PROJECTDIR
+    git apply -v patchs/0*.patch
+    cp -v $PATCHSDIR/CMakeLists.txt $PROJECTDIR/CMakeLists.txt
+fi
+echo $1 finished

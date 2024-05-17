@@ -1,0 +1,15 @@
+[submodule "libimobiledevice-glue"]
+	path = libimobiledevice-glue
+	url = https://github.com/libimobiledevice/libimobiledevice-glue.git
+[submodule "idevicerestore"]
+	path = idevicerestore
+	url = https://github.com/libimobiledevice/idevicerestore.git
+[submodule "libimobiledevice"]
+	path = libimobiledevice
+	url = https://github.com/libimobiledevice/libimobiledevice.git
+[submodule "libusbmuxd"]
+	path = libusbmuxd
+	url = https://github.com/libimobiledevice/libusbmuxd.git
+[submodule "libirecovery"]
+	path = libirecovery
+	url = https://github.com/libimobiledevice/libirecovery.git
