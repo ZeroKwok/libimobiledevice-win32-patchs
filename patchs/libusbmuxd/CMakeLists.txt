@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(libusbmuxd C)
 
-option(BUILD_TOOLS "Build tools." OFF)
+option(LIBUSBMUXD_BUILD_TOOLS "Build tools." ON)
 
 include(GNUInstallDirs)
 
@@ -10,6 +10,7 @@ file(GLOB_RECURSE LIBUSBMUXD_SOURCE src/*.c)
 
 set(DEFINITIONS)
 
+list(APPEND DEFINITIONS -DPACKAGE_VERSION="2.0")
 list(APPEND DEFINITIONS -DPACKAGE_STRING="2.0.2")
 
 if(BUILD_SHARED_LIBS)
@@ -41,8 +42,10 @@ add_library(libusbmuxd ${LIBUSBMUXD_SOURCE})
 add_library(unofficial::libusbmuxd::libusbmuxd ALIAS libusbmuxd)
 target_include_directories(libusbmuxd PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/patchs>"
     "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
+target_compile_options(libusbmuxd PRIVATE /FImsvc.h)
 target_compile_definitions(libusbmuxd PRIVATE ${DEFINITIONS})
 target_link_libraries(libusbmuxd
     PRIVATE
@@ -50,6 +53,10 @@ target_link_libraries(libusbmuxd
         unofficial::libimobiledevice-glue::libimobiledevice-glue
 )
 set_target_properties(libusbmuxd PROPERTIES OUTPUT_NAME usbmuxd-2.0)
+
+if(NOT BUILD_SHARED_LIBS)
+    target_compile_definitions(libusbmuxd PUBLIC LIBUSBMUXD_STATIC=1)
+endif()
 
 if(WIN32)
     target_link_libraries(libusbmuxd PRIVATE Ws2_32)
@@ -88,7 +95,7 @@ install(
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
 )
 
-if(BUILD_TOOLS)
+if(LIBUSBMUXD_BUILD_TOOLS)
     if(WIN32)
         find_package(unofficial-getopt-win32 REQUIRED)
     endif()
