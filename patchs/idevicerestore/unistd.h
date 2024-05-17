@@ -38,9 +38,9 @@
 /* read, write, and close are NOT being #defined here, because while there are file handle specific versions for Windows, they probably don't work for sockets. You need to look at your app and consider whether to call e.g. closesocket(). */
 
 #ifdef _WIN64
-#define ssize_t __int64
+typedef __int64 ssize_t;
 #else
-#define ssize_t long
+typedef long ssize_t;
 #endif
 
 #define STDIN_FILENO 0

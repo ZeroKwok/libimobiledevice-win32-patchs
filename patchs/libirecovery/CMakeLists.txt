@@ -28,9 +28,12 @@ if(WIN32)
     list(APPEND DEFINITIONS -DWIN32)
 endif()
 
-find_package(unofficial-libimobiledevice-glue CONFIG REQUIRED)
+if (NOT TARGET libimobiledevice-glue)
+    find_package(unofficial-libimobiledevice-glue CONFIG REQUIRED)
+endif()
 
 add_library(libirecovery ${LIBIRECOVERY_SOURCE})
+add_library(unofficial::libirecovery::libirecovery ALIAS libirecovery)
 target_include_directories(libirecovery PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
     "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"

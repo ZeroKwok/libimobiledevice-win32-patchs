@@ -34,11 +34,16 @@ if(WIN32)
 endif()
 
 find_package(unofficial-libplist CONFIG REQUIRED)
-find_package(unofficial-libimobiledevice-glue CONFIG REQUIRED)
-find_package(unofficial-libusbmuxd CONFIG REQUIRED)
 find_package(OpenSSL REQUIRED)
+if (NOT TARGET libimobiledevice-glue)
+    find_package(unofficial-libimobiledevice-glue CONFIG REQUIRED)
+endif()
+if (NOT TARGET libusbmuxd)
+    find_package(unofficial-libusbmuxd CONFIG REQUIRED)
+endif()
 
 add_library(libimobiledevice ${LIBIMOBILEDEVICE_SOURCE} ${LIBIMOBILEDEVICE_COMMON_SOURCE})
+add_library(unofficial::libimobiledevice::libimobiledevice ALIAS libimobiledevice)
 target_include_directories(libimobiledevice PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>"
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"

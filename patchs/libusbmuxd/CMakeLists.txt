@@ -32,9 +32,13 @@ if(WIN32)
 endif()
 
 find_package(unofficial-libplist CONFIG REQUIRED)
-find_package(unofficial-libimobiledevice-glue CONFIG REQUIRED)
+
+if (NOT TARGET libimobiledevice-glue)
+    find_package(unofficial-libimobiledevice-glue CONFIG REQUIRED)
+endif()
 
 add_library(libusbmuxd ${LIBUSBMUXD_SOURCE})
+add_library(unofficial::libusbmuxd::libusbmuxd ALIAS libusbmuxd)
 target_include_directories(libusbmuxd PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
     "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"

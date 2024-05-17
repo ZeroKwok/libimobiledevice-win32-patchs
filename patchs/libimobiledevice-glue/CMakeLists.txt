@@ -27,6 +27,7 @@ endif()
 find_package(unofficial-libplist CONFIG REQUIRED)
 
 add_library(libimobiledevice-glue ${LIBIMOBILEDEVICEGLUE_SOURCE})
+add_library(unofficial::libimobiledevice-glue::libimobiledevice-glue ALIAS libimobiledevice-glue)
 target_include_directories(libimobiledevice-glue
     PRIVATE
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
