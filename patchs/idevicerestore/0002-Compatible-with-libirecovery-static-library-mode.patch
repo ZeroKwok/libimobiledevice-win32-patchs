@@ -1,0 +1,38 @@
+From 3e9f80bf771369e88ff4e0caecb9c41e3b183af6 Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Mon, 20 May 2024 17:15:38 +0800
+Subject: [PATCH 2/2] Compatible with libirecovery static library mode
+
+---
+ src/idevicerestore.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/idevicerestore.c b/src/idevicerestore.c
+index f27c357..d173ab1 100644
+--- a/src/idevicerestore.c
++++ b/src/idevicerestore.c
+@@ -1910,12 +1910,21 @@ int main(int argc, char* argv[]) {
+ 
+ 	curl_global_init(CURL_GLOBAL_ALL);
+ 
++	// need manual initialization of libirecovery when using static lib
++#ifdef IRECV_STATIC
++	irecv_init();
++#endif
++
+ 	result = idevicerestore_start(client);
+ 
+ 	idevicerestore_client_free(client);
+ 
+ 	curl_global_cleanup();
+ 
++#ifdef IRECV_STATIC
++	irecv_exit();
++#endif
++
+ 	return (result == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
+ }
+ #endif
+-- 
+2.44.0.windows.1
+

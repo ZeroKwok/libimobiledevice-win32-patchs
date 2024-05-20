@@ -15,8 +15,6 @@ if(BUILD_SHARED_LIBS)
     if(WIN32)
         list(APPEND DEFINITIONS -DIRECV_EXPORT)
     endif()
-else()
-    list(APPEND DEFINITIONS -DIRECV_STATIC)
 endif()
 
 if(APPLE)
@@ -59,6 +57,10 @@ endif()
 
 if(APPLE)
     target_link_libraries(libirecovery PRIVATE "-framework IOKit" "-framework CoreFoundation")
+endif()
+
+if(NOT BUILD_SHARED_LIBS)
+    target_compile_definitions(libirecovery PUBLIC -DIRECV_STATIC)
 endif()
 
 install(TARGETS libirecovery EXPORT unofficial-libirecovery)
