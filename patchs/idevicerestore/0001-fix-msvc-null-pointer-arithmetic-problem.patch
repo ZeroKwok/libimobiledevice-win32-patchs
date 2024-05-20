@@ -1,0 +1,62 @@
+From 31f0f8eea34177dd35ef2460726a6671da2556cb Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Mon, 20 May 2024 15:35:47 +0800
+Subject: [PATCH] fix msvc null pointer arithmetic problem
+
+---
+ src/fls.c | 7 +++++++
+ src/fls.h | 2 +-
+ src/mbn.h | 2 +-
+ 3 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/src/fls.c b/src/fls.c
+index f422447..3fd21f2 100644
+--- a/src/fls.c
++++ b/src/fls.c
+@@ -28,6 +28,10 @@
+ #define offsetof(type, member)  __builtin_offsetof (type, member)
+ #endif
+ 
++#ifndef void
++#define void char
++#endif
++
+ static void fls_parse_elements(fls_file* fls)
+ {
+ 	/* FIXME: the following code is not big endian safe */
+@@ -336,3 +340,6 @@ int fls_insert_ticket(fls_file* fls, const unsigned char* data, unsigned int siz
+ 	return 0;
+ }
+ 
++#ifdef void
++#undef void
++#endif
+diff --git a/src/fls.h b/src/fls.h
+index 57b3869..8a47453 100644
+--- a/src/fls.h
++++ b/src/fls.h
+@@ -73,7 +73,7 @@ typedef struct {
+ 	unsigned int max_elements;
+ 	fls_element** elements;
+ 	const fls_0c_element* c_element;
+-	void* data;
++	unsigned char* data;
+ 	uint32_t size;
+ } fls_file;
+ 
+diff --git a/src/mbn.h b/src/mbn.h
+index 008ba61..864d880 100644
+--- a/src/mbn.h
++++ b/src/mbn.h
+@@ -96,7 +96,7 @@ typedef struct {
+ 	} header;
+ 	uint32_t parsed_size;
+ 	uint32_t parsed_sig_offset;
+-	void* data;
++	unsigned char* data;
+ 	uint32_t size;
+ } mbn_file;
+ 
+-- 
+2.44.0.windows.1
+
