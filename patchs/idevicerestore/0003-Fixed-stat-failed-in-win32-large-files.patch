@@ -1,0 +1,30 @@
+From 106a05dd4fd6d66333291778ed3c7ca2f5d012cd Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Mon, 20 May 2024 18:35:39 +0800
+Subject: [PATCH 3/3] Fixed stat failed in win32 large files
+
+---
+ src/ipsw.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/ipsw.c b/src/ipsw.c
+index c25f61d..d75a4e0 100644
+--- a/src/ipsw.c
++++ b/src/ipsw.c
+@@ -314,8 +314,13 @@ ipsw_archive_t ipsw_open(const char* ipsw)
+ 		return NULL;
+ 	}
+ 
++#ifndef WIN32
+ 	struct stat fst;
+ 	if (stat(ipsw, &fst) != 0) {
++#else
++    struct _stat64 fst;
++    if (_stat64(ipsw, &fst) != 0) {
++#endif
+ 		error("ERROR: ipsw_open %s: %s\n", ipsw, strerror(errno));
+ 		return NULL;
+ 	}
+-- 
+2.44.0.windows.1
+
