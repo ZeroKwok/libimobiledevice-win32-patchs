@@ -1,0 +1,13 @@
+diff --git a/include/plist/plist.h b/include/plist/plist.h
+index aff81e9..4724c09 100644
+--- a/include/plist/plist.h
++++ b/include/plist/plist.h
+@@ -78,6 +78,8 @@ extern "C"
+ #ifndef PLIST_API
+   #ifdef LIBPLIST_STATIC
+     #define PLIST_API
++  #elif defined(PLIST_EXPORT)
++    #define PLIST_API __declspec(dllexport)
+   #elif defined(_WIN32)
+     #define PLIST_API __declspec(dllimport)
+   #else

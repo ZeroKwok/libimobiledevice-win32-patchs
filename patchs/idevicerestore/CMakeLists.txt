@@ -5,7 +5,6 @@ project(idevicerestore C)
 include(GNUInstallDirs)
 
 file(GLOB_RECURSE IDEVICERESTORE_SOURCE src/*.c src/*.h)
-file(GLOB_RECURSE IDEVICERESTORE_PATCHS patchs/*.h)
 list(FILTER IDEVICERESTORE_SOURCE EXCLUDE REGEX "sha(1|512)\\.(c|h)$")
 
 set(DEFINITIONS)
@@ -35,6 +34,10 @@ find_package(OpenSSL REQUIRED)
 find_package(ZLIB REQUIRED)
 find_path(DIRENT_INCLUDE_DIR dirent.h REQUIRED)
 
+if (NOT TARGET libplist)
+    find_package(unofficial-libplist CONFIG REQUIRED)
+endif()
+
 if (NOT TARGET libimobiledevice-glue)
     find_package(unofficial-libimobiledevice-glue CONFIG REQUIRED)
 endif()
@@ -48,7 +51,12 @@ if (NOT TARGET libirecovery)
     find_package(unofficial-libirecovery CONFIG REQUIRED)
 endif()
 
-add_executable(idevicerestore ${IDEVICERESTORE_SOURCE} ${IDEVICERESTORE_PATCHS})
+list(APPEND DEFINITIONS -DLIMD_GLUE_STATIC)
+list(APPEND DEFINITIONS -DLIBIMOBILEDEVICE_STATIC)
+list(APPEND DEFINITIONS -DLIBUSBMUXD_STATIC)
+list(APPEND DEFINITIONS -DIRECV_STATIC)
+
+add_executable(idevicerestore ${IDEVICERESTORE_SOURCE})
 target_include_directories(idevicerestore PRIVATE
     ${DIRENT_INCLUDE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/src
@@ -58,9 +66,11 @@ target_compile_options(idevicerestore PRIVATE /FImsvc.h)
 target_compile_definitions(idevicerestore PRIVATE ${DEFINITIONS})
 target_link_libraries(idevicerestore PRIVATE
     CURL::libcurl
+    unofficial::libplist::libplist
     unofficial::libimobiledevice::libimobiledevice
     unofficial::libimobiledevice-glue::libimobiledevice-glue
     unofficial::libirecovery::libirecovery
+    unofficial::libusbmuxd::libusbmuxd
     libzip::zip
     OpenSSL::SSL
     OpenSSL::Crypto

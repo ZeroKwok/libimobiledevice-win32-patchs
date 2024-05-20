@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(libimobiledevice C)
 
-option(BUILD_TOOLS "Build tools." OFF)
+option(LIBIMOBILEDEVICE_BUILD_TOOLS "Build tools." ON)
 
 include(GNUInstallDirs)
 
@@ -11,13 +11,12 @@ file(GLOB_RECURSE LIBIMOBILEDEVICE_COMMON_SOURCE common/*.c common/*.h)
 set(DEFINITIONS)
 
 list(APPEND DEFINITIONS -DHAVE_OPENSSL)
+list(APPEND DEFINITIONS -DPACKAGE_VERSION="1.3")
 
 if(BUILD_SHARED_LIBS)
     if(WIN32)
         list(APPEND LIBIMOBILEDEVICE_SOURCE exports.def)
     endif()
-else()
-    list(APPEND DEFINITIONS -DLIBIMOBILEDEVICE_STATIC)
 endif()
 
 if(UNIX)
@@ -33,11 +32,15 @@ if(WIN32)
     list(APPEND DEFINITIONS -DWIN32)
 endif()
 
-find_package(unofficial-libplist CONFIG REQUIRED)
 find_package(OpenSSL REQUIRED)
+if (NOT TARGET libplist)
+    find_package(unofficial-libplist CONFIG REQUIRED)
+endif()
+
 if (NOT TARGET libimobiledevice-glue)
     find_package(unofficial-libimobiledevice-glue CONFIG REQUIRED)
 endif()
+
 if (NOT TARGET libusbmuxd)
     find_package(unofficial-libusbmuxd CONFIG REQUIRED)
 endif()
@@ -47,9 +50,12 @@ add_library(unofficial::libimobiledevice::libimobiledevice ALIAS libimobiledevic
 target_include_directories(libimobiledevice PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>"
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/patchs>"
     "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
+target_compile_options(libimobiledevice PRIVATE /FImsvc.h)
 target_compile_definitions(libimobiledevice PRIVATE ${DEFINITIONS})
+target_compile_definitions(libimobiledevice PUBLIC LIBIMOBILEDEVICE_STATIC)
 target_link_libraries(libimobiledevice
     PRIVATE
         unofficial::libimobiledevice-glue::libimobiledevice-glue
@@ -63,6 +69,10 @@ set_target_properties(libimobiledevice PROPERTIES OUTPUT_NAME imobiledevice-1.0)
 
 if(WIN32)
     target_link_libraries(libimobiledevice PRIVATE Ws2_32)
+endif()
+
+if(NOT BUILD_SHARED_LIBS)
+    target_compile_definitions(libimobiledevice PUBLIC -DLIBIMOBILEDEVICE_STATIC)
 endif()
 
 install(TARGETS libimobiledevice EXPORT unofficial-libimobiledevice)
@@ -84,11 +94,11 @@ install(
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
 
-set(LIBPLIST_VERSION 2.0)
-set(LIMD_GLUE_VERSION 1.0)
-set(LIBUSBMUXD_VERSION 2.0)
+set(LIBPLIST_VERSION 2.5)
+set(LIMD_GLUE_VERSION 1.2)
+set(LIBUSBMUXD_VERSION 2.1)
 set(PACKAGE_NAME libimobiledevice)
-set(PACKAGE_VERSION 1.0)
+set(PACKAGE_VERSION 1.3)
 set(prefix "")
 set(exec_prefix "\${prefix}")
 set(libdir "\${prefix}/lib")
@@ -104,13 +114,16 @@ install(
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
 )
 
-if(BUILD_TOOLS)
+if(LIBIMOBILEDEVICE_BUILD_TOOLS)
     if(WIN32)
         find_package(unofficial-getopt-win32 REQUIRED)
     endif()
 
     function(add_tool name source)
         add_executable("${name}" "${source}" ${LIBIMOBILEDEVICE_COMMON_SOURCE})
+        target_include_directories("${name}" PUBLIC 
+            "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/patchs>")
+        target_compile_options("${name}" PRIVATE /FImsvc.h)
         target_compile_definitions("${name}" PRIVATE
             -DPACKAGE_VERSION="2.0.2"
             -DPACKAGE_URL="https://github.com/libimobiledevice/libusbmuxd"

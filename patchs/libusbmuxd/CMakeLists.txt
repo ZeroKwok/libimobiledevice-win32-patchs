@@ -10,15 +10,13 @@ file(GLOB_RECURSE LIBUSBMUXD_SOURCE src/*.c)
 
 set(DEFINITIONS)
 
-list(APPEND DEFINITIONS -DPACKAGE_VERSION="2.0")
-list(APPEND DEFINITIONS -DPACKAGE_STRING="2.0.2")
+list(APPEND DEFINITIONS -DPACKAGE_VERSION="2.1")
+list(APPEND DEFINITIONS -DPACKAGE_STRING="2.1.0")
 
 if(BUILD_SHARED_LIBS)
     if(WIN32)
         list(APPEND LIBUSBMUXD_SOURCE exports.def)
     endif()
-else()
-    list(APPEND DEFINITIONS -DLIBUSBMUXD_STATIC)
 endif()
 
 if(UNIX)
@@ -32,7 +30,10 @@ if(WIN32)
     list(APPEND DEFINITIONS -DWIN32)
 endif()
 
-find_package(unofficial-libplist CONFIG REQUIRED)
+find_package(unofficial-getopt-win32 REQUIRED)
+if (NOT TARGET libplist)
+    find_package(unofficial-libplist CONFIG REQUIRED)
+endif()
 
 if (NOT TARGET libimobiledevice-glue)
     find_package(unofficial-libimobiledevice-glue CONFIG REQUIRED)
@@ -51,11 +52,12 @@ target_link_libraries(libusbmuxd
     PRIVATE
         unofficial::libplist::libplist
         unofficial::libimobiledevice-glue::libimobiledevice-glue
+        unofficial::getopt-win32::getopt
 )
 set_target_properties(libusbmuxd PROPERTIES OUTPUT_NAME usbmuxd-2.0)
 
 if(NOT BUILD_SHARED_LIBS)
-    target_compile_definitions(libusbmuxd PUBLIC LIBUSBMUXD_STATIC=1)
+    target_compile_definitions(libusbmuxd PUBLIC -DLIBUSBMUXD_STATIC)
 endif()
 
 if(WIN32)
@@ -76,10 +78,10 @@ install(
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
 
-set(LIBPLIST_VERSION 2.0)
-set(LIMD_GLUE_VERSION 1.0)
+set(LIBPLIST_VERSION 2.5)
+set(LIMD_GLUE_VERSION 1.2)
 set(PACKAGE_NAME libusbmuxd)
-set(PACKAGE_VERSION 2.0)
+set(PACKAGE_VERSION 2.1)
 set(prefix "")
 set(exec_prefix "\${prefix}")
 set(libdir "\${prefix}/lib")

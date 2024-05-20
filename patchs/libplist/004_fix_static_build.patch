@@ -1,0 +1,22 @@
+diff --git a/src/plist.c b/src/plist.c
+index a425466..5667470 100644
+--- a/src/plist.c
++++ b/src/plist.c
+@@ -156,6 +156,8 @@ static pthread_once_t deinit_once = PTHREAD_ONCE_INIT;
+ #define thread_once pthread_once
+ #endif
+ 
++#ifndef LIBPLIST_STATIC  // disable dll constructor
++
+ #ifndef HAVE_ATTRIBUTE_CONSTRUCTOR
+   #if defined(__llvm__) || defined(__GNUC__)
+     #define HAVE_ATTRIBUTE_CONSTRUCTOR
+@@ -191,6 +193,8 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD dwReason, LPVOID lpReserved)
+ #warning No compiler support for constructor/destructor attributes, some features might not be available.
+ #endif
+ 
++#endif  // disable dll constructor
++
+ #ifndef HAVE_MEMMEM
+ // see https://sourceware.org/legacy-ml/libc-alpha/2007-12/msg00000.html
+ 

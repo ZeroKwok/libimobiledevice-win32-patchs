@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(libirecovery C)
 
-option(BUILD_TOOLS "Build tools." OFF)
+option(LIBIRECOVERY_BUILD_TOOLS "Build tools." ON)
 
 include(GNUInstallDirs)
 
@@ -9,6 +9,7 @@ file(GLOB_RECURSE LIBIRECOVERY_HEADER include/*.h)
 file(GLOB_RECURSE LIBIRECOVERY_SOURCE src/*.c)
 
 set(DEFINITIONS)
+list(APPEND DEFINITIONS -DPACKAGE_VERSION="1.2")
 
 if(BUILD_SHARED_LIBS)
     if(WIN32)
@@ -36,8 +37,10 @@ add_library(libirecovery ${LIBIRECOVERY_SOURCE})
 add_library(unofficial::libirecovery::libirecovery ALIAS libirecovery)
 target_include_directories(libirecovery PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/patchs>"
     "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
+target_compile_options(libirecovery PRIVATE /FImsvc.h)
 target_compile_definitions(libirecovery PRIVATE ${DEFINITIONS})
 target_link_libraries(libirecovery
     PRIVATE
@@ -72,9 +75,9 @@ install(
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
 
-set(LIMD_GLUE_VERSION 1.0)
+set(LIMD_GLUE_VERSION 1.2)
 set(PACKAGE_NAME libirecovery)
-set(PACKAGE_VERSION 1.0)
+set(PACKAGE_VERSION 1.2)
 set(prefix "")
 set(exec_prefix "\${prefix}")
 set(libdir "\${prefix}/lib")
@@ -90,7 +93,7 @@ install(
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
 )
 
-if(BUILD_TOOLS)
+if(LIBIRECOVERY_BUILD_TOOLS)
     add_executable(irecovery "tools/irecovery.c")
     target_compile_definitions(irecovery PRIVATE
         -DPACKAGE_VERSION="1.1.0"

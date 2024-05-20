@@ -13,3 +13,6 @@
 [submodule "libirecovery"]
 	path = libirecovery
 	url = https://github.com/libimobiledevice/libirecovery.git
+[submodule "libplist"]
+	path = libplist
+	url = https://github.com/libimobiledevice/libplist.git

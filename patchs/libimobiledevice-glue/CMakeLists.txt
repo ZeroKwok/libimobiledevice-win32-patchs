@@ -3,14 +3,13 @@ project(libimobiledevice-glue C CXX)
 
 include(GNUInstallDirs)
 
-set(DEFINITIONS PACKAGE_VERSION="1.0")
+set(DEFINITIONS)
 
+list(APPEND DEFINITIONS -DPACKAGE_VERSION="1.2")
 if(BUILD_SHARED_LIBS)
     if(WIN32)
         list(APPEND LIBIMOBILEDEVICEGLUE_SOURCE exports.def)
     endif()
-else()
-    list(APPEND DEFINITIONS -DLIBIMOBILEDEVICEGLUE_STATIC)
 endif()
 
 if(UNIX)
@@ -22,7 +21,9 @@ if(WIN32)
     list(APPEND DEFINITIONS -DWIN32)
 endif()
 
-find_package(unofficial-libplist CONFIG REQUIRED)
+if (NOT TARGET libplist)
+    find_package(unofficial-libplist CONFIG REQUIRED)
+endif()
 
 file(GLOB_RECURSE LIBIMOBILEDEVICEGLUE_SOURCE src/*.c)
 
@@ -30,9 +31,9 @@ add_library(libimobiledevice-glue ${LIBIMOBILEDEVICEGLUE_SOURCE})
 add_library(unofficial::libimobiledevice-glue::libimobiledevice-glue ALIAS libimobiledevice-glue)
 target_include_directories(libimobiledevice-glue
     PRIVATE
-        "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/patchs>"
     PUBLIC
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 target_compile_options(libimobiledevice-glue PRIVATE /FImsvc.h)
@@ -45,6 +46,10 @@ set_target_properties(libimobiledevice-glue PROPERTIES OUTPUT_NAME imobiledevice
 
 if(WIN32)
     target_link_libraries(libimobiledevice-glue PRIVATE Ws2_32 Iphlpapi)
+endif()
+
+if(NOT BUILD_SHARED_LIBS)
+    target_compile_definitions(libimobiledevice-glue PUBLIC -DLIMD_GLUE_STATIC)
 endif()
 
 install(TARGETS libimobiledevice-glue EXPORT unofficial-libimobiledevice-glue)
@@ -61,9 +66,9 @@ install(
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
 
-set(LIBPLIST_VERSION 2.0)
+set(LIBPLIST_VERSION 2.5)
 set(PACKAGE_NAME libimobiledevice-glue)
-set(PACKAGE_VERSION 1.0)
+set(PACKAGE_VERSION 1.2)
 set(prefix "")
 set(exec_prefix "\${prefix}")
 set(libdir "\${prefix}/lib")

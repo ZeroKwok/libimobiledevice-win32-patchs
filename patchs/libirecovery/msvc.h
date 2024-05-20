@@ -5,8 +5,13 @@
 #   define __attribute__(x) /*NOTHING*/
 #endif
 
-#ifdef _MSC_VER
-#define strcasecmp _stricmp
+#ifndef _WIN32
+#   define _WIN32
+#endif
+
+#ifndef strcasecmp
+#   include "string.h"
+#   define strcasecmp _stricmp
 #endif
 
 #endif // msvc_h__

@@ -1,7 +1,7 @@
 cmake_policy(SET CMP0074 NEW)
 cmake_minimum_required(VERSION 3.13)
 
-project(MBProduct VERSION 2.1)
+project(libimobiledevice)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -17,6 +17,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG          ${CMAKE_CURRENT_SOURCE_DIR}/bi
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE        ${CMAKE_CURRENT_SOURCE_DIR}/bin/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO ${CMAKE_CURRENT_SOURCE_DIR}/bin/lib)
 
+add_subdirectory(libplist)
 add_subdirectory(libimobiledevice-glue)
 add_subdirectory(libusbmuxd)
 add_subdirectory(libimobiledevice)

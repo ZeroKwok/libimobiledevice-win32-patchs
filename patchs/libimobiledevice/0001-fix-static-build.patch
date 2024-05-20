@@ -1,0 +1,34 @@
+From 3141db1b85efde4cc97c523a9099dc75c23579ea Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Mon, 20 May 2024 14:50:00 +0800
+Subject: [PATCH] fix static build
+
+---
+ src/idevice.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/idevice.c b/src/idevice.c
+index b9bbb1f..f8dbd9a 100644
+--- a/src/idevice.c
++++ b/src/idevice.c
+@@ -190,6 +190,8 @@ static thread_once_t deinit_once = THREAD_ONCE_INIT;
+   #endif
+ #endif
+ 
++#ifndef LIBIMOBILEDEVICE_STATIC  // disable dll constructor
++
+ #ifdef HAVE_ATTRIBUTE_CONSTRUCTOR
+ static void __attribute__((constructor)) libimobiledevice_initialize(void)
+ {
+@@ -219,6 +221,8 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD dwReason, LPVOID lpReserved)
+ #warning No compiler support for constructor/destructor attributes, some features might not be available.
+ #endif
+ 
++#endif  // disable dll constructor
++
+ const char* libimobiledevice_version()
+ {
+ #ifndef PACKAGE_VERSION
+-- 
+2.44.0.windows.1
+
