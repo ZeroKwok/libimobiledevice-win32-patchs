@@ -1,7 +1,7 @@
-From 3141db1b85efde4cc97c523a9099dc75c23579ea Mon Sep 17 00:00:00 2001
+From 068b5cfc7b541120ddad58c850f0ec620b081101 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Mon, 20 May 2024 14:50:00 +0800
-Subject: [PATCH] fix static build
+Date: Tue, 21 May 2024 17:15:13 +0800
+Subject: [PATCH 1/2] fix static library compilation problems
 
 ---
  src/idevice.c | 4 ++++

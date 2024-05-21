@@ -1,0 +1,24 @@
+From f2a78805daae3d096a456ca2fe721f3ebf8949ee Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Tue, 21 May 2024 17:15:23 +0800
+Subject: [PATCH 2/2] fix ideviceprovision compilation problem
+
+---
+ tools/ideviceprovision.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tools/ideviceprovision.c b/tools/ideviceprovision.c
+index 4080a28..9de7593 100644
+--- a/tools/ideviceprovision.c
++++ b/tools/ideviceprovision.c
+@@ -38,6 +38,7 @@
+ 
+ #ifdef WIN32
+ #include <windows.h>
++#include <WinSock2.h>
+ #else
+ #include <arpa/inet.h>
+ #endif
+-- 
+2.44.0.windows.1
+
