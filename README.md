@@ -4,11 +4,11 @@
 
 **注意：**
 
-本仓库仅做 MSVC 环境兼容的相关操作, 确保运用补丁后可以正确通过编译以及正常的运行主要功能，而不会修改官方代码所带来的问题。
+本仓库仅做 MSVC 环境兼容的相关操作, 确保应用补丁后可以正确通过编译以及正常的运行主要功能，而不会修改官方代码所带来的问题。
 
 ## 补丁支持状态
 
-```txt
+```md
 # idevicerestore
   - 56d2c01(2024-05-18 23:50:02)
   - Add missing cast to silence compiler warning
@@ -32,8 +32,11 @@
 ## 构建需要
 
 - 安装最新的 vcpkg，并安装以下依赖库
+  - curl
+  - zlib
   - libusb
   - libplist
+  - readline
   - openssl
   - pkgconf
 - git bash
@@ -46,7 +49,7 @@
 ```bash
 git clone --recursive https://github.com/ZeroKwok/libimobiledevice-win32-patchs.git
 cd libimobiledevice-win32-patchs
-./export.sh # entry y
+./patch.sh # entry y
 mkdir build && cd build
 cmake -G "Visual Studio 16 2019" -A Win32 .. -DCMAKE_TOOLCHAIN_FILE="G:/local/vcpkg/scripts/buildsystems/vcpkg.cmake" -DCMAKE_INSTALL_PREFIX="../installed"
 cmake --build .
