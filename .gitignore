@@ -3,3 +3,4 @@ build/
 .vs/
 .vscode/
 patch-cli.sh
+patch-status.txt
