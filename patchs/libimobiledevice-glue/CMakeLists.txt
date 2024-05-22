@@ -62,7 +62,7 @@ install(
 )
 
 install(
-    DIRECTORY "${CMAKE_SOURCE_DIR}/include/libimobiledevice-glue"
+    DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/include/libimobiledevice-glue"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
 

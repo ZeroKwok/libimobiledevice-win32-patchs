@@ -85,12 +85,12 @@ install(
 )
 
 install(
-    DIRECTORY "${CMAKE_SOURCE_DIR}/include/libimobiledevice"
+    DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/include/libimobiledevice"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
 
 install(
-    FILES "${CMAKE_SOURCE_DIR}/include/endianness.h"
+    FILES "${CMAKE_CURRENT_LIST_DIR}/include/endianness.h"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
 

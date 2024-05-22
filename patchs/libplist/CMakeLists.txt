@@ -66,7 +66,7 @@ install(
 )
 
 install(
-    DIRECTORY "${CMAKE_SOURCE_DIR}/include/plist"
+    DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/include/plist"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
 
