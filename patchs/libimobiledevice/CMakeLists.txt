@@ -73,6 +73,9 @@ endif()
 
 if(NOT BUILD_SHARED_LIBS)
     target_compile_definitions(libimobiledevice PUBLIC -DLIBIMOBILEDEVICE_STATIC)
+
+    include(cmake_utility)
+    utility_install_pdb(libimobiledevice)
 endif()
 
 install(TARGETS libimobiledevice EXPORT unofficial-libimobiledevice)

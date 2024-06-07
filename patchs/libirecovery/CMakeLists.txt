@@ -61,6 +61,9 @@ endif()
 
 if(NOT BUILD_SHARED_LIBS)
     target_compile_definitions(libirecovery PUBLIC -DIRECV_STATIC)
+
+    include(cmake_utility)
+    utility_install_pdb(libirecovery)
 endif()
 
 install(TARGETS libirecovery EXPORT unofficial-libirecovery)

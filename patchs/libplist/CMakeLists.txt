@@ -54,6 +54,10 @@ set_target_properties(libplist++ PROPERTIES OUTPUT_NAME plist++-2.0)
 if (NOT BUILD_SHARED_LIBS)
     target_compile_definitions(libplist PUBLIC -DLIBPLIST_STATIC)
     target_compile_definitions(libplist++ PUBLIC -DLIBPLIST_STATIC)
+
+    include(cmake_utility)
+    utility_install_pdb(libplist)
+    utility_install_pdb(libplist++)
 endif()
 
 install(TARGETS libplist libplist++ EXPORT unofficial-libplist)
