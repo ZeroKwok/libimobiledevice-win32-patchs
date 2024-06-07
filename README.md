@@ -40,6 +40,8 @@
   - libplist
   - readline
   - openssl
+  - getopt
+  - dirent
   - pkgconf
 - git bash
 - rsync
