@@ -1,7 +1,7 @@
-From 3e9f80bf771369e88ff4e0caecb9c41e3b183af6 Mon Sep 17 00:00:00 2001
+From f68d8d53c7a04f87913f97901b46d317f4a0268e Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Mon, 20 May 2024 17:15:38 +0800
-Subject: [PATCH 2/3] Compatible with libirecovery static library mode
+Date: Fri, 28 Jun 2024 10:22:27 +0800
+Subject: [PATCH 2/3] Compatible-with-libirecovery-static-library-mode
 
 ---
  src/idevicerestore.c | 9 +++++++++
@@ -34,5 +34,5 @@ index f27c357..d173ab1 100644
  }
  #endif
 -- 
-2.44.0.windows.1
+2.40.1.windows.1
 

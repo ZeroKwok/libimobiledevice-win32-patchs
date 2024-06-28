@@ -89,11 +89,12 @@ add_library(libidevicerestore STATIC ${IDEVICERESTORE_SOURCE})
 add_library(unofficial::libidevicerestore::libidevicerestore ALIAS libidevicerestore)
 target_include_directories(libidevicerestore 
     PRIVATE ${IDEVICERESTORE_INCLUDE_DIR}
+    PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>"
     PUBLIC "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/libidevicerestore>")
 set_target_properties(libidevicerestore PROPERTIES PUBLIC_HEADER "${IDEVICERESTORE_INCLUDE}")
 target_compile_options(libidevicerestore PRIVATE /FImsvc.h)
 target_compile_definitions(libidevicerestore PRIVATE ${DEFINITIONS})
-target_link_libraries(libidevicerestore PRIVATE ${IDEVICERESTORE_DEPEND})
+target_link_libraries(libidevicerestore PUBLIC ${IDEVICERESTORE_DEPEND})
 
 
 install(TARGETS idevicerestore
