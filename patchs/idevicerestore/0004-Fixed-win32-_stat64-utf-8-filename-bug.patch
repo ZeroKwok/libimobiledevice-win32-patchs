@@ -1,0 +1,73 @@
+From b37d144d0e2db8266f6dddbce596e49b3e214cee Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Wed, 24 Jul 2024 15:31:17 +0800
+Subject: [PATCH 4/4] Fixed win32 _stat64 utf 8 filename bug
+
+---
+ src/ipsw.c | 49 ++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 48 insertions(+), 1 deletion(-)
+
+diff --git a/src/ipsw.c b/src/ipsw.c
+index 7558992..1168349 100644
+--- a/src/ipsw.c
++++ b/src/ipsw.c
+@@ -53,8 +53,55 @@
+ #include "common.h"
+ #include "idevicerestore.h"
+ 
++
++#ifdef WIN32
++inline const uintptr_t _utf82utf16(const char* input, wchar_t* output)
++{
++	int len = MultiByteToWideChar(CP_UTF8, 0, input, -1, NULL, 0);
++    if (!output)
++        return (uintptr_t)len;
++    MultiByteToWideChar(CP_UTF8, 0, input, -1, (LPWSTR)output, len);
++    return (uintptr_t)output;
++}
++
++struct _stat64_utf8
++{
++    _dev_t         st_dev;
++    _ino_t         st_ino;
++    unsigned short st_mode;
++    short          st_nlink;
++    short          st_uid;
++    short          st_gid;
++    _dev_t         st_rdev;
++    __int64        st_size;
++    __time64_t     st_atime;
++    __time64_t     st_mtime;
++    __time64_t     st_ctime;
++};
++
++inline int _stat64_utf8(
++	char const* const path, struct _stat64* result)
++{
++	int count, size;
++	wchar_t* wbuf = NULL;
++
++	count = _utf82utf16(path, 0);
++	size = (count + 1) * 2;
++	wbuf = malloc(size);
++	memset(wbuf, 0, size);
++	_utf82utf16(path, wbuf);
++
++	result = _wstat64(wbuf, result);
++	free(wbuf);
++
++	return result;
++}
++
++
++#endif
++
+ #ifdef WIN32
+-#	define stat _stat64
++#	define stat _stat64_utf8
+ #	define size_t unsigned __int64
+ #else
+ #	define stat stat
+-- 
+2.40.1.windows.1
+
