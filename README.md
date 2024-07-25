@@ -12,20 +12,23 @@
 
 ```md
 # idevicerestore
-  - 56d2c01(2024-05-18 23:50:02)
-  - Add missing cast to silence compiler warning
+  - f7e24ce(2024-07-09 11:45:10)
+  - ipsw: Fix concurrent access to ZIP file
 # libimobiledevice
-  - 9ccc522(2024-05-20 17:48:13)
-  - tools/afcclient: Add missing argument count check for `get` command
+  - 2a0a6d5(2024-07-01 18:27:27)
+  - tools: Fix heap buffer overflow in ideviceimagemounter
 # libimobiledevice-glue
-  - 14c2e4b(2024-05-13 19:49:40)
-  - socket: Create an IPv4 compatible IPv6 socket when NULL is passed to socket_create
+  - 362f784(2024-06-16 08:14:12)
+  - Update soversion for release
 # libirecovery
-  - 617fb57(2024-04-16 16:43:14)
-  - automake: Prevent `dist` or `distcheck` when uncommitted changes are present
+  - 7ce02c3(2024-05-31 19:11:25)
+  - Add iPad Air (M2) and iPad Pro (M4) models
 # libplist
   - e8791e2(2024-05-19 13:39:25)
   - [github-actions] codeql-analysis: Update actions to newer version
+# libtatsu
+  - e3eb2e2(2024-06-17 19:56:30)
+  - Updated NEWS for release
 # libusbmuxd
   - a7f0543(2024-04-16 16:42:26)
   - automake: Prevent `dist` or `distcheck` when uncommitted changes are present
