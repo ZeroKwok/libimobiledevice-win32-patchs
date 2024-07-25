@@ -1,3 +1,13 @@
+From aa7fddf448bf4a73045b7db647c5bc318cef9dd4 Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Wed, 24 Jul 2024 17:41:24 +0800
+Subject: [PATCH 3/3] 003_fix_tools_msvc
+
+---
+ tools/inetcat.c | 9 +++++++++
+ tools/iproxy.c  | 2 ++
+ 2 files changed, 11 insertions(+)
+
 diff --git a/tools/inetcat.c b/tools/inetcat.c
 index f70215b..748db15 100644
 --- a/tools/inetcat.c
@@ -27,7 +37,7 @@ index f70215b..748db15 100644
  
  static size_t read_data_socket(int fd, uint8_t* buf, size_t bufsize)
 diff --git a/tools/iproxy.c b/tools/iproxy.c
-index d5f66b6..6510cb8 100644
+index 1bb9e77..0f71fc9 100644
 --- a/tools/iproxy.c
 +++ b/tools/iproxy.c
 @@ -34,7 +34,9 @@
@@ -40,3 +50,6 @@ index d5f66b6..6510cb8 100644
  #include <errno.h>
  #include <getopt.h>
  #ifdef WIN32
+-- 
+2.40.1.windows.1
+

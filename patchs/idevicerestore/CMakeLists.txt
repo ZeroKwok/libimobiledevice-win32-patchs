@@ -52,6 +52,9 @@ endif()
 if (NOT TARGET libirecovery)
     find_package(unofficial-libirecovery CONFIG REQUIRED)
 endif()
+if (NOT TARGET libtatsu)
+    find_package(unofficial-libtatsu CONFIG REQUIRED)
+endif()
 
 list(APPEND DEFINITIONS -DLIMD_GLUE_STATIC)
 list(APPEND DEFINITIONS -DLIBIMOBILEDEVICE_STATIC)
@@ -65,6 +68,7 @@ set(IDEVICERESTORE_DEPEND
     unofficial::libimobiledevice-glue::libimobiledevice-glue
     unofficial::libirecovery::libirecovery
     unofficial::libusbmuxd::libusbmuxd
+    unofficial::libtatsu::libtatsu
     libzip::zip
     OpenSSL::SSL
     OpenSSL::Crypto

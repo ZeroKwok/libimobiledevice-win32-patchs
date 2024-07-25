@@ -1,6 +1,6 @@
 #!/bin/sh
-# ./patch-cli.sh patch ���ɲ���
-# ./patch-cli.sh apply Ӧ�ò���
+# ./patch-cli.sh patch 生成补丁
+# ./patch-cli.sh apply 应用补丁
 
 if test $# -lt 1 ; then
     exit 1
@@ -18,11 +18,11 @@ if test $1 = 'patch'; then
     cp -v $PROJECTDIR/CMakeLists.txt $PATCHSDIR/CMakeLists.txt
 elif test $1 = 'apply'; then
     cd $PROJECTDIR
-	if test -x "`which gapply.py`" ; then
-	    gapply.py patchs/0*.patch
-	else
-            git apply -v patchs/0*.patch
-	fi
+    if test -x "`which gapply.py`" ; then
+        gapply.py patchs/0*.patch
+    else
+        git apply -v patchs/0*.patch
+    fi
     cp -v $PATCHSDIR/CMakeLists.txt $PROJECTDIR/CMakeLists.txt
 fi
 echo $1 finished

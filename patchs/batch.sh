@@ -34,6 +34,7 @@ else # apply
         cp -v $2/patch-cli.in  $PatchDir/patch-cli.sh
     fi
 
+    echo ''
     echo rsync -av $PatchDir/ $ModulePatchDir
     rsync -av $PatchDir/ $ModulePatchDir && $ModulePatchDir/patch-cli.sh apply
 fi

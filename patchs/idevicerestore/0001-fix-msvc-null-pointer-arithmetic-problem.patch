@@ -1,6 +1,6 @@
-From 53328d9c5b6a9613821938a75dd8180378611863 Mon Sep 17 00:00:00 2001
+From 3640236875810667d8df70b1dfa74225aa2a3b62 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 24 Jul 2024 15:31:16 +0800
+Date: Wed, 24 Jul 2024 17:41:16 +0800
 Subject: [PATCH 1/4] fix msvc null pointer arithmetic problem
 
 ---

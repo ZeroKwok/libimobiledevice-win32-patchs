@@ -45,6 +45,10 @@ if (NOT TARGET libusbmuxd)
     find_package(unofficial-libusbmuxd CONFIG REQUIRED)
 endif()
 
+if (NOT TARGET libtatsu)
+    find_package(unofficial-libtatsu CONFIG REQUIRED)
+endif()
+
 add_library(libimobiledevice ${LIBIMOBILEDEVICE_SOURCE} ${LIBIMOBILEDEVICE_COMMON_SOURCE})
 add_library(unofficial::libimobiledevice::libimobiledevice ALIAS libimobiledevice)
 target_include_directories(libimobiledevice PUBLIC
@@ -60,6 +64,7 @@ target_link_libraries(libimobiledevice
     PRIVATE
         unofficial::libimobiledevice-glue::libimobiledevice-glue
         unofficial::libusbmuxd::libusbmuxd
+        unofficial::libtatsu::libtatsu
         OpenSSL::SSL
         OpenSSL::Crypto
     PUBLIC
@@ -137,6 +142,7 @@ if(LIBIMOBILEDEVICE_BUILD_TOOLS)
             libimobiledevice
             unofficial::libimobiledevice-glue::libimobiledevice-glue
             unofficial::libusbmuxd::libusbmuxd
+            unofficial::libtatsu::libtatsu
             OpenSSL::SSL
             OpenSSL::Crypto
         )

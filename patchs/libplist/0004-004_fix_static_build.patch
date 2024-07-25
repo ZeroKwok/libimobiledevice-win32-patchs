@@ -1,3 +1,12 @@
+From 46ded78324ccecd433033579ee785aeefa8cbe77 Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Wed, 24 Jul 2024 17:41:23 +0800
+Subject: [PATCH 4/4] 004_fix_static_build
+
+---
+ src/plist.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
 diff --git a/src/plist.c b/src/plist.c
 index a425466..5667470 100644
 --- a/src/plist.c
@@ -20,3 +29,6 @@ index a425466..5667470 100644
  #ifndef HAVE_MEMMEM
  // see https://sourceware.org/legacy-ml/libc-alpha/2007-12/msg00000.html
  
+-- 
+2.40.1.windows.1
+

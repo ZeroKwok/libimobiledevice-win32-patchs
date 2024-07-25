@@ -1,3 +1,12 @@
+From b840354948b85443bef31c01d7a9b20ec7983053 Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Wed, 24 Jul 2024 17:41:22 +0800
+Subject: [PATCH 2/4] 002_fix_tools_msvc
+
+---
+ tools/plistutil.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
 diff --git a/tools/plistutil.c b/tools/plistutil.c
 index 8121a7d..98b440e 100644
 --- a/tools/plistutil.c
@@ -16,3 +25,6 @@ index 8121a7d..98b440e 100644
  #endif
  
  typedef struct _options
+-- 
+2.40.1.windows.1
+

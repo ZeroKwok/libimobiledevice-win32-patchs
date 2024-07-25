@@ -1,3 +1,12 @@
+From 6fb46f71ab3d72780e2ab05dcb1543bf24579d63 Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Wed, 24 Jul 2024 17:41:22 +0800
+Subject: [PATCH 3/4] 003_fix_build_dll
+
+---
+ include/plist/plist.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
 diff --git a/include/plist/plist.h b/include/plist/plist.h
 index aff81e9..4724c09 100644
 --- a/include/plist/plist.h
@@ -11,3 +20,6 @@ index aff81e9..4724c09 100644
    #elif defined(_WIN32)
      #define PLIST_API __declspec(dllimport)
    #else
+-- 
+2.40.1.windows.1
+

@@ -1,3 +1,12 @@
+From ea1aee00eccbe752500e7d98dc056459098ca44b Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Wed, 24 Jul 2024 17:41:24 +0800
+Subject: [PATCH 1/3] 001_fix_win32_defs
+
+---
+ include/usbmuxd-proto.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/include/usbmuxd-proto.h b/include/usbmuxd-proto.h
 index a2a731e..38473f5 100644
 --- a/include/usbmuxd-proto.h
@@ -11,3 +20,6 @@ index a2a731e..38473f5 100644
  #define USBMUXD_SOCKET_PORT 27015
  #else
  #define USBMUXD_SOCKET_FILE "/var/run/usbmuxd"
+-- 
+2.40.1.windows.1
+

@@ -1,6 +1,6 @@
-From 65bdc71c393fc443018f8334dca562c8cc590c7f Mon Sep 17 00:00:00 2001
+From 40940093bd05bf05b848c4a32cf499dd205905bb Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 24 Jul 2024 15:31:16 +0800
+Date: Wed, 24 Jul 2024 17:41:16 +0800
 Subject: [PATCH 2/4] Compatible with libirecovery static library mode
 
 ---
@@ -8,10 +8,10 @@ Subject: [PATCH 2/4] Compatible with libirecovery static library mode
  1 file changed, 9 insertions(+)
 
 diff --git a/src/idevicerestore.c b/src/idevicerestore.c
-index f27c357..d173ab1 100644
+index 8de9186..8a0afd4 100644
 --- a/src/idevicerestore.c
 +++ b/src/idevicerestore.c
-@@ -1910,12 +1910,21 @@ int main(int argc, char* argv[]) {
+@@ -1906,12 +1906,21 @@ int main(int argc, char* argv[]) {
  
  	curl_global_init(CURL_GLOBAL_ALL);
  

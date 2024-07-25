@@ -1,8 +1,17 @@
+From 302cefd176645715d5e27b309e820695985c5c60 Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Wed, 24 Jul 2024 17:41:21 +0800
+Subject: [PATCH] 001_fix_static_build
+
+---
+ src/libirecovery.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
 diff --git a/src/libirecovery.c b/src/libirecovery.c
-index a60782c..514d851 100644
+index 6b110f1..aea1eb7 100644
 --- a/src/libirecovery.c
 +++ b/src/libirecovery.c
-@@ -619,6 +619,8 @@ static thread_once_t deinit_once = THREAD_ONCE_INIT;
+@@ -627,6 +627,8 @@ static thread_once_t deinit_once = THREAD_ONCE_INIT;
    #endif
  #endif
  
@@ -11,7 +20,7 @@ index a60782c..514d851 100644
  #ifdef HAVE_ATTRIBUTE_CONSTRUCTOR
  static void __attribute__((constructor)) libirecovery_initialize(void)
  {
-@@ -648,6 +650,8 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD dwReason, LPVOID lpReserved)
+@@ -656,6 +658,8 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD dwReason, LPVOID lpReserved)
  #warning No compiler support for constructor/destructor attributes, some features might not be available.
  #endif
  
@@ -20,3 +29,6 @@ index a60782c..514d851 100644
  #ifdef HAVE_IOKIT
  static int iokit_get_string_descriptor_ascii(irecv_client_t client, uint8_t desc_index, unsigned char * buffer, int size)
  {
+-- 
+2.40.1.windows.1
+

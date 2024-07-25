@@ -1,5 +1,14 @@
+From 79fbe13b9da79a6094e94824884bf705ffe1a414 Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Wed, 24 Jul 2024 17:41:22 +0800
+Subject: [PATCH 1/4] 001_fix_msvc
+
+---
+ src/bplist.c | 51 ++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 50 insertions(+), 1 deletion(-)
+
 diff --git a/src/bplist.c b/src/bplist.c
-index 953c2c77..d7b4777a 100644
+index 93f0bc6..7ed5341 100644
 --- a/src/bplist.c
 +++ b/src/bplist.c
 @@ -87,6 +87,28 @@ union plist_uint_ptr
@@ -104,3 +113,6 @@ index 953c2c77..d7b4777a 100644
  		i++;
  		if (wc >= 0xD800 && wc <= 0xDBFF) {
  			if (!read_lead_surrogate) {
+-- 
+2.40.1.windows.1
+

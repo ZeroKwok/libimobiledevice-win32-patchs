@@ -1,6 +1,6 @@
-From 25977d4fc61381cb4e72f54d2183c8d7a5dace45 Mon Sep 17 00:00:00 2001
+From 78bfee1f4f26ea95db5544cc09a4401f6430441b Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 24 Jul 2024 15:31:16 +0800
+Date: Wed, 24 Jul 2024 17:41:17 +0800
 Subject: [PATCH 3/4] Fixed stat failed in win32 large files
 
 ---
@@ -9,10 +9,10 @@ Subject: [PATCH 3/4] Fixed stat failed in win32 large files
  2 files changed, 20 insertions(+)
 
 diff --git a/src/ipsw.c b/src/ipsw.c
-index c25f61d..7558992 100644
+index 3ae1066..faa9d71 100644
 --- a/src/ipsw.c
 +++ b/src/ipsw.c
-@@ -53,6 +53,13 @@
+@@ -45,6 +45,13 @@
  #include "common.h"
  #include "idevicerestore.h"
  
@@ -26,7 +26,7 @@ index c25f61d..7558992 100644
  #define BUFSIZE 0x100000
  
  static int cancel_flag = 0;
-@@ -1407,3 +1414,11 @@ int64_t ipsw_file_tell(ipsw_file_handle_t handle)
+@@ -1500,3 +1507,11 @@ int64_t ipsw_file_tell(ipsw_file_handle_t handle)
  		return -1;
  	}
  }
@@ -39,7 +39,7 @@ index c25f61d..7558992 100644
 +#	undef size_t
 +#endif
 diff --git a/src/ipsw.h b/src/ipsw.h
-index f0e11a1..d67ba1e 100644
+index 8cb2561..4c5fc17 100644
 --- a/src/ipsw.h
 +++ b/src/ipsw.h
 @@ -43,8 +43,13 @@ void ipsw_close(ipsw_archive_t ipsw);

@@ -1,6 +1,6 @@
-From f2a78805daae3d096a456ca2fe721f3ebf8949ee Mon Sep 17 00:00:00 2001
+From 6e70fb6df5450176a33f6f66dddf49b1eaa44f1c Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Tue, 21 May 2024 17:15:23 +0800
+Date: Wed, 24 Jul 2024 17:41:19 +0800
 Subject: [PATCH 2/2] fix ideviceprovision compilation problem
 
 ---
@@ -20,5 +20,5 @@ index 4080a28..9de7593 100644
  #include <arpa/inet.h>
  #endif
 -- 
-2.44.0.windows.1
+2.40.1.windows.1
 

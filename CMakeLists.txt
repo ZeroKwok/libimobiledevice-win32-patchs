@@ -19,6 +19,7 @@ if (${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
 endif()
 
 add_subdirectory(libplist)
+add_subdirectory(libtatsu)
 add_subdirectory(libimobiledevice-glue)
 add_subdirectory(libusbmuxd)
 add_subdirectory(libimobiledevice)

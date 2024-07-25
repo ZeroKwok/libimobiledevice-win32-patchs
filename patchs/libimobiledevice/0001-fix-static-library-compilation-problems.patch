@@ -1,6 +1,6 @@
-From 068b5cfc7b541120ddad58c850f0ec620b081101 Mon Sep 17 00:00:00 2001
+From 8a38749ca35b7e07c37457ae0186b7bd1390d5b7 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Tue, 21 May 2024 17:15:13 +0800
+Date: Wed, 24 Jul 2024 17:41:18 +0800
 Subject: [PATCH 1/2] fix static library compilation problems
 
 ---
@@ -30,5 +30,5 @@ index b9bbb1f..f8dbd9a 100644
  {
  #ifndef PACKAGE_VERSION
 -- 
-2.44.0.windows.1
+2.40.1.windows.1
 

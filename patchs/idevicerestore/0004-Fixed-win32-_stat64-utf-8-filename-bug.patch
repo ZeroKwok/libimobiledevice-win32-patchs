@@ -1,6 +1,6 @@
-From b37d144d0e2db8266f6dddbce596e49b3e214cee Mon Sep 17 00:00:00 2001
+From a14ba5ea1bb291955f2d6f7d46e68281b3e5fc04 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 24 Jul 2024 15:31:17 +0800
+Date: Wed, 24 Jul 2024 17:41:17 +0800
 Subject: [PATCH 4/4] Fixed win32 _stat64 utf 8 filename bug
 
 ---
@@ -8,10 +8,10 @@ Subject: [PATCH 4/4] Fixed win32 _stat64 utf 8 filename bug
  1 file changed, 48 insertions(+), 1 deletion(-)
 
 diff --git a/src/ipsw.c b/src/ipsw.c
-index 7558992..1168349 100644
+index faa9d71..f461251 100644
 --- a/src/ipsw.c
 +++ b/src/ipsw.c
-@@ -53,8 +53,55 @@
+@@ -45,8 +45,55 @@
  #include "common.h"
  #include "idevicerestore.h"
  

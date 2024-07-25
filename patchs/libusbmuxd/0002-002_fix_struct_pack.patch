@@ -1,3 +1,12 @@
+From c33a262eae2fac3f67a4f23d5a2d04c4fb7af716 Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Wed, 24 Jul 2024 17:41:24 +0800
+Subject: [PATCH 2/3] 002_fix_struct_pack
+
+---
+ include/usbmuxd-proto.h | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
 diff --git a/include/usbmuxd-proto.h b/include/usbmuxd-proto.h
 index 38473f5..d004232 100644
 --- a/include/usbmuxd-proto.h
@@ -48,3 +57,6 @@ index 38473f5..d004232 100644
  
  #ifdef __cplusplus
  }
+-- 
+2.40.1.windows.1
+
