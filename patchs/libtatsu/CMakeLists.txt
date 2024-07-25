@@ -56,7 +56,7 @@ add_library(unofficial::libtatsu::libtatsu ALIAS libtatsu)
 target_include_directories(libtatsu 
     PRIVATE ${LIBTATSU_INCLUDE_DIR}
     PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
-    PUBLIC "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/include>")
+    PUBLIC "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 set_target_properties(libtatsu PROPERTIES PUBLIC_HEADER "${LIBTATSU_INCLUDE}")
 target_compile_options(libtatsu PRIVATE /FImsvc.h)
 target_compile_definitions(libtatsu PRIVATE ${DEFINITIONS})
