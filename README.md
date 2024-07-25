@@ -1,6 +1,6 @@
 # libimobiledevice-win32-patchs
 
-这是一个基于 libimobiledevice 官方仓库的 win32 补丁集合，允许官方原版代码可以在 CMake & MSVC 环境下通过编译。
+这是一个基于 [libimobiledevice](https://github.com/libimobiledevice) 官方仓库的 win32 补丁集合，允许官方原版代码可以在 CMake & MSVC 环境下通过编译。
 
 **注意：**
 
