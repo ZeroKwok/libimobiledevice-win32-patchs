@@ -1,0 +1,24 @@
+From 096a8f00b1d15ce274e013859fc71f845c2d4a2c Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Tue, 30 Jul 2024 16:38:29 +0800
+Subject: [PATCH 6/6] opt errno is set when optimizing ipsw open() fails
+
+---
+ src/ipsw.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/ipsw.c b/src/ipsw.c
+index f461251..6111aa5 100644
+--- a/src/ipsw.c
++++ b/src/ipsw.c
+@@ -372,6 +372,7 @@ ipsw_archive_t ipsw_open(const char* ipsw)
+ 		if (zip == NULL) {
+ 			error("ERROR: zip_open: %s: %d\n", ipsw, err);
+ 			free(archive);
++			_set_errno(err);
+ 			return NULL;
+ 		}
+ 		archive->zip = 1;
+-- 
+2.40.1.windows.1
+
