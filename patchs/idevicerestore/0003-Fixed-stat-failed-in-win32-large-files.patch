@@ -1,7 +1,7 @@
-From 78bfee1f4f26ea95db5544cc09a4401f6430441b Mon Sep 17 00:00:00 2001
+From dfd92583712a6a9a554a0a15803ea865c980c778 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 24 Jul 2024 17:41:17 +0800
-Subject: [PATCH 3/4] Fixed stat failed in win32 large files
+Date: Wed, 25 Sep 2024 16:03:13 +0800
+Subject: [PATCH 3/5] Fixed stat failed in win32 large files
 
 ---
  src/ipsw.c | 15 +++++++++++++++
@@ -9,7 +9,7 @@ Subject: [PATCH 3/4] Fixed stat failed in win32 large files
  2 files changed, 20 insertions(+)
 
 diff --git a/src/ipsw.c b/src/ipsw.c
-index 3ae1066..faa9d71 100644
+index da7528d..2cb8929 100644
 --- a/src/ipsw.c
 +++ b/src/ipsw.c
 @@ -45,6 +45,13 @@

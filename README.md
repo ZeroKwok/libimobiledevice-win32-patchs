@@ -12,23 +12,23 @@
 
 ```md
 # idevicerestore
-  - f7e24ce(2024-07-09 11:45:10)
-  - ipsw: Fix concurrent access to ZIP file
+  - 27402ca(2024-09-25 02:46:07)
+  - Release DFU/Recovery client on disconnect and Increase timeout for port DFU -> KIS
 # libimobiledevice
-  - 2a0a6d5(2024-07-01 18:27:27)
-  - tools: Fix heap buffer overflow in ideviceimagemounter
+  - ed9703d(2024-09-16 13:20:27)
+  - tools: Add detection and note about passcode requirement for iOS 16.1
 # libimobiledevice-glue
   - 362f784(2024-06-16 08:14:12)
   - Update soversion for release
 # libirecovery
-  - 7ce02c3(2024-05-31 19:11:25)
-  - Add iPad Air (M2) and iPad Pro (M4) models
+  - d55c5f8(2024-09-25 01:32:10)
+  - Make sure IRECV_DEVICE_REMOVE event has the mode set the device was in
 # libplist
   - e8791e2(2024-05-19 13:39:25)
   - [github-actions] codeql-analysis: Update actions to newer version
 # libtatsu
-  - e3eb2e2(2024-06-17 19:56:30)
-  - Updated NEWS for release
+  - 7b4914b(2024-09-21 03:16:14)
+  - Updated for iPhone 16 family
 # libusbmuxd
   - a7f0543(2024-04-16 16:42:26)
   - automake: Prevent `dist` or `distcheck` when uncommitted changes are present

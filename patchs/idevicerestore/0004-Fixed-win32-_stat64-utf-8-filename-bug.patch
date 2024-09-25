@@ -1,14 +1,14 @@
-From a14ba5ea1bb291955f2d6f7d46e68281b3e5fc04 Mon Sep 17 00:00:00 2001
+From 9740a2b4eb334d8a5030589747b10f0d2fe08b2a Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 24 Jul 2024 17:41:17 +0800
-Subject: [PATCH 4/4] Fixed win32 _stat64 utf 8 filename bug
+Date: Wed, 25 Sep 2024 16:03:13 +0800
+Subject: [PATCH 4/5] Fixed win32 _stat64 utf 8 filename bug
 
 ---
  src/ipsw.c | 49 ++++++++++++++++++++++++++++++++++++++++++++++++-
  1 file changed, 48 insertions(+), 1 deletion(-)
 
 diff --git a/src/ipsw.c b/src/ipsw.c
-index faa9d71..f461251 100644
+index 2cb8929..fd0d5a3 100644
 --- a/src/ipsw.c
 +++ b/src/ipsw.c
 @@ -45,8 +45,55 @@

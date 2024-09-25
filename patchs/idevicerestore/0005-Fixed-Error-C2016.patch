@@ -1,6 +1,6 @@
-From 9b1bf06befe93eef8bc44e001f37055141093fc2 Mon Sep 17 00:00:00 2001
+From 68c50442a9aeacf3ae6bc4b97d23c24744dd61eb Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Thu, 25 Jul 2024 09:38:12 +0800
+Date: Wed, 25 Sep 2024 16:03:13 +0800
 Subject: [PATCH 5/5] Fixed Error C2016
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH 5/5] Fixed Error C2016
  1 file changed, 2 insertions(+)
 
 diff --git a/src/restore.c b/src/restore.c
-index d3828f9..de55795 100644
+index 6fdf755..d17fd66 100644
 --- a/src/restore.c
 +++ b/src/restore.c
 @@ -636,9 +636,11 @@ const char* restore_progress_string(unsigned int operation)

@@ -1,17 +1,17 @@
-From 302cefd176645715d5e27b309e820695985c5c60 Mon Sep 17 00:00:00 2001
+From 239a6cb5fb2ca482dcd3850dc9555d4b0c5f8485 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 24 Jul 2024 17:41:21 +0800
-Subject: [PATCH] 001_fix_static_build
+Date: Wed, 25 Sep 2024 16:03:15 +0800
+Subject: [PATCH 1/2] [PATCH] 001_fix_static_build
 
 ---
  src/libirecovery.c | 4 ++++
  1 file changed, 4 insertions(+)
 
 diff --git a/src/libirecovery.c b/src/libirecovery.c
-index 6b110f1..aea1eb7 100644
+index ddc1946..ac243a7 100644
 --- a/src/libirecovery.c
 +++ b/src/libirecovery.c
-@@ -627,6 +627,8 @@ static thread_once_t deinit_once = THREAD_ONCE_INIT;
+@@ -635,6 +635,8 @@ static thread_once_t deinit_once = THREAD_ONCE_INIT;
    #endif
  #endif
  
@@ -20,7 +20,7 @@ index 6b110f1..aea1eb7 100644
  #ifdef HAVE_ATTRIBUTE_CONSTRUCTOR
  static void __attribute__((constructor)) libirecovery_initialize(void)
  {
-@@ -656,6 +658,8 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD dwReason, LPVOID lpReserved)
+@@ -664,6 +666,8 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD dwReason, LPVOID lpReserved)
  #warning No compiler support for constructor/destructor attributes, some features might not be available.
  #endif
  

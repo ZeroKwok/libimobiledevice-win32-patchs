@@ -1,6 +1,6 @@
-From 8a38749ca35b7e07c37457ae0186b7bd1390d5b7 Mon Sep 17 00:00:00 2001
+From d943e1841fc2686a82bd843803a590658dd6d20c Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 24 Jul 2024 17:41:18 +0800
+Date: Wed, 25 Sep 2024 16:03:14 +0800
 Subject: [PATCH 1/2] fix static library compilation problems
 
 ---
