@@ -1,7 +1,7 @@
-From dfd92583712a6a9a554a0a15803ea865c980c778 Mon Sep 17 00:00:00 2001
+From 48ad41a2194ff90fc602c59610813e9136b36406 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 25 Sep 2024 16:03:13 +0800
-Subject: [PATCH 3/5] Fixed stat failed in win32 large files
+Date: Tue, 5 Nov 2024 17:59:34 +0800
+Subject: [PATCH 3/6] Fixed stat failed in win32 large files
 
 ---
  src/ipsw.c | 15 +++++++++++++++

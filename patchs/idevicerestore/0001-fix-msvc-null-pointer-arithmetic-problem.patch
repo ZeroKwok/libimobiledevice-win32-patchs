@@ -1,7 +1,7 @@
-From 2c3ea132bb118640d60e3abf0f9390dab297223e Mon Sep 17 00:00:00 2001
+From 016fea5a27f650f667822d0268ff4cd1b3cd3495 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 25 Sep 2024 16:03:12 +0800
-Subject: [PATCH 1/5] fix msvc null pointer arithmetic problem
+Date: Tue, 5 Nov 2024 17:59:34 +0800
+Subject: [PATCH 1/6] fix msvc null pointer arithmetic problem
 
 ---
  src/fls.c | 7 +++++++

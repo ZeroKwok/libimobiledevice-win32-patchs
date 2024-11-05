@@ -1,6 +1,6 @@
-From 6fb46f71ab3d72780e2ab05dcb1543bf24579d63 Mon Sep 17 00:00:00 2001
+From 1b6c2dd5ab5f4c626d2a866acd24e57e8f98a202 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 24 Jul 2024 17:41:22 +0800
+Date: Tue, 5 Nov 2024 17:59:38 +0800
 Subject: [PATCH 3/4] 003_fix_build_dll
 
 ---

@@ -1,6 +1,6 @@
-From b840354948b85443bef31c01d7a9b20ec7983053 Mon Sep 17 00:00:00 2001
+From 9839d6608c24688b963e4c6c3086283287c13cef Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 24 Jul 2024 17:41:22 +0800
+Date: Tue, 5 Nov 2024 17:59:37 +0800
 Subject: [PATCH 2/4] 002_fix_tools_msvc
 
 ---

@@ -1,7 +1,7 @@
-From 9740a2b4eb334d8a5030589747b10f0d2fe08b2a Mon Sep 17 00:00:00 2001
+From 8eb8871e76c9589de3718f615108d4732b880099 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 25 Sep 2024 16:03:13 +0800
-Subject: [PATCH 4/5] Fixed win32 _stat64 utf 8 filename bug
+Date: Tue, 5 Nov 2024 17:59:34 +0800
+Subject: [PATCH 4/6] Fixed win32 _stat64 utf 8 filename bug
 
 ---
  src/ipsw.c | 49 ++++++++++++++++++++++++++++++++++++++++++++++++-

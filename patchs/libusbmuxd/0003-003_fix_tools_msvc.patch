@@ -1,6 +1,6 @@
-From aa7fddf448bf4a73045b7db647c5bc318cef9dd4 Mon Sep 17 00:00:00 2001
+From cedbf7cf4dee938f5dcb6bbca22f9d423e5ce216 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 24 Jul 2024 17:41:24 +0800
+Date: Tue, 5 Nov 2024 17:59:39 +0800
 Subject: [PATCH 3/3] 003_fix_tools_msvc
 
 ---
@@ -37,7 +37,7 @@ index f70215b..748db15 100644
  
  static size_t read_data_socket(int fd, uint8_t* buf, size_t bufsize)
 diff --git a/tools/iproxy.c b/tools/iproxy.c
-index 1bb9e77..0f71fc9 100644
+index 6849ef9..f2e855b 100644
 --- a/tools/iproxy.c
 +++ b/tools/iproxy.c
 @@ -34,7 +34,9 @@

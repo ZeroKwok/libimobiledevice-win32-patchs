@@ -1,6 +1,6 @@
-From 46ded78324ccecd433033579ee785aeefa8cbe77 Mon Sep 17 00:00:00 2001
+From 4eea38f1b5073259a684a33bad08e32e3a7ca2d5 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 24 Jul 2024 17:41:23 +0800
+Date: Tue, 5 Nov 2024 17:59:38 +0800
 Subject: [PATCH 4/4] 004_fix_static_build
 
 ---

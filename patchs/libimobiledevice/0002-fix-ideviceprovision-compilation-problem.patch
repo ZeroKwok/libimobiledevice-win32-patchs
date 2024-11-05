@@ -1,6 +1,6 @@
-From 6ee32e35bf0115e427b5fac8438dd11c06824266 Mon Sep 17 00:00:00 2001
+From 2656c7a6be744fd93124f33d8e090d951604f3c2 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 25 Sep 2024 16:03:14 +0800
+Date: Tue, 5 Nov 2024 17:59:35 +0800
 Subject: [PATCH 2/2] fix ideviceprovision compilation problem
 
 ---
