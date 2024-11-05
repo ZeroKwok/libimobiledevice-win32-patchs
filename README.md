@@ -10,28 +10,30 @@
 
 ## 补丁支持状态
 
+Update to 2024-11-05
+
 ```md
 # idevicerestore
-  - 27402ca(2024-09-25 02:46:07)
-  - Release DFU/Recovery client on disconnect and Increase timeout for port DFU -> KIS
+  - 61a76ce(2024-11-03 22:09:54)
+  - [github-actions] Update curl workflow to build 8.10.1 for UCRT64
 # libimobiledevice
-  - ed9703d(2024-09-16 13:20:27)
-  - tools: Add detection and note about passcode requirement for iOS 16.1
+  - 5aebbc0(2024-10-27 16:07:30)
+  - configure: Fine-tuning for MinGW/msys build
 # libimobiledevice-glue
-  - 362f784(2024-06-16 08:14:12)
-  - Update soversion for release
+  - 5140e4f(2024-10-29 11:12:26)
+  - socket.c: define AI_NUMERICSERV if undefined
 # libirecovery
-  - d55c5f8(2024-09-25 01:32:10)
-  - Make sure IRECV_DEVICE_REMOVE event has the mode set the device was in
+  - 7a5e619(2024-11-05 02:55:37)
+  - Fix conditional compile for libreadline
 # libplist
-  - e8791e2(2024-05-19 13:39:25)
-  - [github-actions] codeql-analysis: Update actions to newer version
+  - a5df0a6(2024-10-22 19:35:40)
+  - Update README
 # libtatsu
-  - 7b4914b(2024-09-21 03:16:14)
-  - Updated for iPhone 16 family
+  - 1d31ade(2024-10-28 00:21:16)
+  - configure: Fine-tuning for MinGW/msys build
 # libusbmuxd
-  - a7f0543(2024-04-16 16:42:26)
-  - automake: Prevent `dist` or `distcheck` when uncommitted changes are present
+  - dd0d0d4(2024-10-22 19:36:50)
+  - Updated README
 ```
 
 ## 构建需要
@@ -40,7 +42,6 @@
   - curl
   - zlib
   - libusb
-  - libplist
   - readline
   - openssl
   - getopt
