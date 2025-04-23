@@ -67,6 +67,7 @@ if(NOT LIBIRECOVERY_BUILD_SHARED_LIBS)
     utility_install_pdb(libirecovery)
 else()
     set_target_properties(libirecovery PROPERTIES DEBUG_POSTFIX "d")
+    install(FILES $<TARGET_PDB_FILE:libirecovery> DESTINATION bin OPTIONAL)
 endif()
 
 install(TARGETS libirecovery EXPORT unofficial-libirecovery)
