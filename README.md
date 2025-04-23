@@ -10,30 +10,30 @@
 
 ## 补丁支持状态
 
-Update to 2024-11-05
+Update to 2025-04-23
 
 ```md
 # idevicerestore
-  - 61a76ce(2024-11-03 22:09:54)
-  - [github-actions] Update curl workflow to build 8.10.1 for UCRT64
+  - a5905b7(2025-03-27 01:52:20)
+  - Fix iPhone 16e restore from normal mode
 # libimobiledevice
-  - 5aebbc0(2024-10-27 16:07:30)
-  - configure: Fine-tuning for MinGW/msys build
+  - a6b6c35(2025-02-28 13:22:09)
+  - tool/afcclient: Fix local file name error on pulling folder from device
 # libimobiledevice-glue
-  - 5140e4f(2024-10-29 11:12:26)
-  - socket.c: define AI_NUMERICSERV if undefined
+  - c915351(2025-03-01 14:48:09)
+  - socket: Use a backwards-compatible way to deal with , before __VA_ARGS__
 # libirecovery
-  - 7a5e619(2024-11-05 02:55:37)
-  - Fix conditional compile for libreadline
+  - 638056a(2025-03-20 16:01:33)
+  - Add support for all March 2025 Apple devices
 # libplist
-  - a5df0a6(2024-10-22 19:35:40)
-  - Update README
+  - d031e94(2025-04-06 12:38:45)
+  - C++: Data: Add const char* constructor
 # libtatsu
-  - 1d31ade(2024-10-28 00:21:16)
-  - configure: Fine-tuning for MinGW/msys build
+  - 7e1647b(2024-12-27 01:52:31)
+  - Add extern "C" guards to public headers
 # libusbmuxd
-  - dd0d0d4(2024-10-22 19:36:50)
-  - Updated README
+  - 19d6bec(2025-02-16 23:48:32)
+  - inetcat: Make sure to report correct error messages
 ```
 
 ## 构建需要
