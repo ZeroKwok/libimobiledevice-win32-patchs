@@ -1,7 +1,7 @@
-From 70acc2bf629970f9eaf3d03e3ec601376f4f912b Mon Sep 17 00:00:00 2001
+From 3575e10ad68f31758a5056ed610e16de885babdc Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Tue, 5 Nov 2024 17:59:34 +0800
-Subject: [PATCH 6/6] opt errno is set when optimizing ipsw open() fails
+Date: Wed, 23 Apr 2025 14:18:41 +0800
+Subject: [PATCH 5/5] opt errno is set when optimizing ipsw open() fails
 
 ---
  src/ipsw.c | 1 +

@@ -1,7 +1,7 @@
-From 551740654907774100058e1c8f393ca6cb1ca8ce Mon Sep 17 00:00:00 2001
+From 77d34c2a75283c79248b818b70f26434158c8285 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Tue, 5 Nov 2024 17:59:34 +0800
-Subject: [PATCH 5/6] Fixed Error C2016
+Date: Wed, 23 Apr 2025 14:18:40 +0800
+Subject: [PATCH 4/5] Fixed Error C2016
 
 ---
  src/restore.c | 2 ++

@@ -1,19 +1,19 @@
-From 2656c7a6be744fd93124f33d8e090d951604f3c2 Mon Sep 17 00:00:00 2001
+From 9480298cf91de31479af8c71cf9821b0c5c4d320 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Tue, 5 Nov 2024 17:59:35 +0800
-Subject: [PATCH 2/2] fix ideviceprovision compilation problem
+Date: Wed, 23 Apr 2025 11:36:51 +0800
+Subject: [PATCH] Fix LNK2019 for ntohl and ntohs symbol on MSVC
 
 ---
  tools/ideviceprovision.c | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/tools/ideviceprovision.c b/tools/ideviceprovision.c
-index 4080a28..9de7593 100644
+index 97417eb..590df05 100644
 --- a/tools/ideviceprovision.c
 +++ b/tools/ideviceprovision.c
 @@ -38,6 +38,7 @@
  
- #ifdef WIN32
+ #ifdef _WIN32
  #include <windows.h>
 +#include <WinSock2.h>
  #else

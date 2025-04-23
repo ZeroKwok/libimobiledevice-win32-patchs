@@ -18,8 +18,8 @@ if test $1 = 'patch'; then
     cp -v $PROJECTDIR/CMakeLists.txt $PATCHSDIR/CMakeLists.txt
 elif test $1 = 'apply'; then
     cd $PROJECTDIR
-    if test -x "`which gapply.py`" ; then
-        gapply.py patchs/0*.patch
+    if test -x "`which gapply`" ; then
+        gapply patchs/0*.patch
     else
         git apply -v patchs/0*.patch
     fi

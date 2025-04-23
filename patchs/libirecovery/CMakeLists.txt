@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 project(libirecovery C)
 
 option(LIBIRECOVERY_BUILD_TOOLS "Build tools." ON)
+option(LIBIRECOVERY_BUILD_SHARED_LIBS "Build Shared library." ON)
 
 include(GNUInstallDirs)
 
@@ -11,7 +12,7 @@ file(GLOB_RECURSE LIBIRECOVERY_SOURCE src/*.c)
 set(DEFINITIONS)
 list(APPEND DEFINITIONS -DPACKAGE_VERSION="1.2")
 
-if(BUILD_SHARED_LIBS)
+if(LIBIRECOVERY_BUILD_SHARED_LIBS)
     if(WIN32)
         list(APPEND DEFINITIONS -DIRECV_EXPORT)
     endif()
@@ -31,7 +32,7 @@ if (NOT TARGET libimobiledevice-glue)
     find_package(unofficial-libimobiledevice-glue CONFIG REQUIRED)
 endif()
 
-add_library(libirecovery ${LIBIRECOVERY_SOURCE})
+add_library(libirecovery SHARED ${LIBIRECOVERY_SOURCE})
 add_library(unofficial::libirecovery::libirecovery ALIAS libirecovery)
 target_include_directories(libirecovery PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
@@ -59,11 +60,13 @@ if(APPLE)
     target_link_libraries(libirecovery PRIVATE "-framework IOKit" "-framework CoreFoundation")
 endif()
 
-if(NOT BUILD_SHARED_LIBS)
+if(NOT LIBIRECOVERY_BUILD_SHARED_LIBS)
     target_compile_definitions(libirecovery PUBLIC -DIRECV_STATIC)
 
     include(cmake_utility)
     utility_install_pdb(libirecovery)
+else()
+    set_target_properties(libirecovery PROPERTIES DEBUG_POSTFIX "d")
 endif()
 
 install(TARGETS libirecovery EXPORT unofficial-libirecovery)
@@ -105,7 +108,7 @@ if(LIBIRECOVERY_BUILD_TOOLS)
         -DPACKAGE_URL="https://github.com/libimobiledevice/libirecovery"
         -DPACKAGE_BUGREPORT="https://github.com/libimobiledevice/libirecovery/issues"
     )
-    if(NOT BUILD_SHARED_LIBS)
+    if(NOT LIBIRECOVERY_BUILD_SHARED_LIBS)
         target_compile_definitions(irecovery PRIVATE -DIRECV_STATIC)
     endif()
     if(WIN32)
