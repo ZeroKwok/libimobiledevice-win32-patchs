@@ -1,0 +1,43 @@
+From b4a6cadd2a12fb1f36db959eee3b1b0f4853419b Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Thu, 25 Sep 2025 16:16:38 +0800
+Subject: [PATCH 2/8] Fix fls.c compilation issues in msvc
+
+---
+ src/fls.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/fls.c b/src/fls.c
+index 8b747a9..8965d57 100644
+--- a/src/fls.c
++++ b/src/fls.c
+@@ -40,7 +40,7 @@ static void fls_parse_elements(fls_file* fls)
+ 
+ 	fls_element* cur = NULL;
+ 	do {
+-		void* p = fls->data + offset;
++		char* p = fls->data + offset;
+ 		uint32_t hdrsize = 0;
+ 		cur = (fls_element*)p;
+ 		if ((offset + cur->size) > fls->size) {
+@@ -160,7 +160,7 @@ int fls_update_sig_blob(fls_file* fls, const void* sigdata, size_t siglen)
+ 
+ 	unsigned int i;
+ 	uint32_t offset = 0;
+-	void* newdata = malloc(newsize);
++	char* newdata = malloc(newsize);
+ 	if (!newdata) {
+ 		logger(LL_ERROR, "%s: out of memory\n", __func__);
+ 		return -1;
+@@ -258,7 +258,7 @@ int fls_insert_ticket(fls_file* fls, const void* data, size_t size)
+ 	size_t newsize = fls->size + size + padding;
+ 	unsigned int i;
+ 	uint32_t offset = 0;
+-	void* newdata = malloc(newsize);
++	char* newdata = malloc(newsize);
+ 	if (!newdata) {
+ 		logger(LL_ERROR, "%s: out of memory\n", __func__);
+ 		return -1;
+-- 
+2.40.1.windows.1
+

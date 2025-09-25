@@ -1,0 +1,25 @@
+From a7d009defadf07536c6863fd4e511811a95baf83 Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Thu, 25 Sep 2025 16:16:22 +0800
+Subject: [PATCH 1/8] Fix ace3.c compilation issues in msvc
+
+---
+ src/ace3.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ace3.c b/src/ace3.c
+index d51613d..3bd9ee6 100644
+--- a/src/ace3.c
++++ b/src/ace3.c
+@@ -78,7 +78,7 @@ static int uarp_version_convert(uint32_t* version_data, uint32_t* version_out)
+ 	return 0;
+ }
+ 
+-int ace3_create_binary(const void* uarp_fw, size_t uarp_size, uint64_t bdid, unsigned int prev, plist_t tss, void** bin_out, size_t* bin_size)
++int ace3_create_binary(const char* uarp_fw, size_t uarp_size, uint64_t bdid, unsigned int prev, plist_t tss, char** bin_out, size_t* bin_size)
+ {
+ 	struct ace3bin_header {
+ 		uint32_t magic;        // 0xACE00003
+-- 
+2.40.1.windows.1
+

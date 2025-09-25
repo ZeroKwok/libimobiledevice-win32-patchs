@@ -1,0 +1,37 @@
+From 1a0f883127da584ee3dd6143ea21f91d2832e02d Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Thu, 25 Sep 2025 16:17:42 +0800
+Subject: [PATCH 6/8] Fix restore.c compilation issues in msvc
+
+---
+ src/restore.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/restore.c b/src/restore.c
+index f5403fc..4d2bc10 100644
+--- a/src/restore.c
++++ b/src/restore.c
+@@ -637,9 +637,11 @@ const char* restore_progress_string(unsigned int operation)
+ 	}
+ }
+ 
++#ifndef WIN32
+ struct restored_service_client {
+ 
+ };
++#endif
+ 
+ #define SERVICE_TYPE_RESTORED 1
+ #define SERVICE_TYPE_PLIST 2
+@@ -2730,7 +2732,7 @@ static plist_t restore_get_savage_firmware_data(struct idevicerestore_client_t*
+ {
+ 	char *comp_name = NULL;
+ 	char *comp_path = NULL;
+-	void* component_data = NULL;
++	char* component_data = NULL;
+ 	size_t component_size = 0;
+ 	void* component_data_tmp = NULL;
+ 	plist_t parameters = NULL;
+-- 
+2.40.1.windows.1
+

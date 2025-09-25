@@ -1,0 +1,25 @@
+From 556db4c485df9801420224024ca33f409e33f279 Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Thu, 25 Sep 2025 16:16:57 +0800
+Subject: [PATCH 3/8] Fix fls.h compilation issues in msvc
+
+---
+ src/fls.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fls.h b/src/fls.h
+index 2db9029..c7e8a67 100644
+--- a/src/fls.h
++++ b/src/fls.h
+@@ -73,7 +73,7 @@ typedef struct {
+ 	unsigned int max_elements;
+ 	fls_element** elements;
+ 	const fls_0c_element* c_element;
+-	void* data;
++	char* data;
+ 	size_t size;
+ } fls_file;
+ 
+-- 
+2.40.1.windows.1
+

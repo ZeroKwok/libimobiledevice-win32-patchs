@@ -1,17 +1,17 @@
-From edf4b9c614ea176ee7b6f92b6b1b6e0c134cdac3 Mon Sep 17 00:00:00 2001
+From 079463beee224c649764fb0aac6bd2fde13bcae9 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Wed, 23 Apr 2025 14:18:40 +0800
-Subject: [PATCH 3/5] Fixed win32 _stat64 utf 8 filename bug
+Date: Thu, 25 Sep 2025 16:19:41 +0800
+Subject: [PATCH 7/8] Fix ipsw.c utf-8 filename bug in msvc
 
 ---
- src/ipsw.c | 49 ++++++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 48 insertions(+), 1 deletion(-)
+ src/ipsw.c | 61 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 61 insertions(+)
 
 diff --git a/src/ipsw.c b/src/ipsw.c
-index 2cb8929..fd0d5a3 100644
+index cebfa49..2049f40 100644
 --- a/src/ipsw.c
 +++ b/src/ipsw.c
-@@ -45,8 +45,55 @@
+@@ -45,6 +45,58 @@
  #include "common.h"
  #include "idevicerestore.h"
  
@@ -58,16 +58,39 @@ index 2cb8929..fd0d5a3 100644
 +
 +	return result;
 +}
-+
-+
 +#endif
 +
- #ifdef WIN32
--#	define stat _stat64
++#ifdef WIN32
 +#	define stat _stat64_utf8
- #	define size_t unsigned __int64
- #else
- #	define stat stat
++#	define size_t unsigned __int64
++#else
++#	define stat stat
++#endif
++
+ #define BUFSIZE 0x100000
+ 
+ static int cancel_flag = 0;
+@@ -318,6 +370,7 @@ ipsw_archive_t ipsw_open(const char* ipsw)
+ 		if (zip == NULL) {
+ 			logger(LL_ERROR, "zip_open: %s: %d\n", ipsw, err);
+ 			free(archive);
++			_set_errno(err);
+ 			return NULL;
+ 		}
+ 		archive->zip = 1;
+@@ -1540,3 +1593,11 @@ int64_t ipsw_file_tell(ipsw_file_handle_t handle)
+ 		return -1;
+ 	}
+ }
++
++#ifdef stat
++#	undef stat
++#endif
++
++#ifdef size_t
++#	undef size_t
++#endif
+\ No newline at end of file
 -- 
 2.40.1.windows.1
 

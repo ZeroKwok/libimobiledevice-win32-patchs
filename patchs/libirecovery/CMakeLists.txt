@@ -4,6 +4,10 @@ project(libirecovery C)
 option(LIBIRECOVERY_BUILD_TOOLS "Build tools." ON)
 option(LIBIRECOVERY_BUILD_SHARED_LIBS "Build Shared library." ON)
 
+set(CMAKE_C_STANDARD 17)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS OFF)
+
 include(GNUInstallDirs)
 
 file(GLOB_RECURSE LIBIRECOVERY_HEADER include/*.h)
