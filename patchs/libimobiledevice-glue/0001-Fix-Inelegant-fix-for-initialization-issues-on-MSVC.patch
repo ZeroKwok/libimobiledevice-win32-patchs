@@ -1,0 +1,38 @@
+From fda10cb415f14e23997e68250a6c8794ed463fcf Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Thu, 25 Sep 2025 18:12:35 +0800
+Subject: [PATCH] Fix: Inelegant fix for initialization issues on MSVC
+
+---
+ src/socket.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/src/socket.c b/src/socket.c
+index b107a7c..40ec606 100644
+--- a/src/socket.c
++++ b/src/socket.c
+@@ -88,6 +88,21 @@
+ #define AI_NUMERICSERV 0
+ #endif
+ 
++#if defined(_MSC_VER)
++#pragma section(".CRT$XCU",read)
++#define INITIALIZER2_(f,p) \
++        __declspec(allocate(".CRT$XCU")) void (*f##_)(void) = f; \
++        __pragma(comment(linker,"/include:" p #f "_"))
++#ifdef _WIN64
++#define INITIALIZER(f) INITIALIZER2_(f,"")
++#else
++#define INITIALIZER(f) INITIALIZER2_(f,"_")
++#endif
++
++#include "libimobiledevice-glue/glue.h"
++INITIALIZER(libimobiledevice_glue_version);
++#endif
++
+ static int verbose = 0;
+ 
+ #define SOCKET_ERR(level, msg, ...) \
+-- 
+2.40.1.windows.1
+
