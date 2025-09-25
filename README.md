@@ -4,36 +4,36 @@
 
 **注意：**
 
-本仓库仅做 MSVC 环境兼容的相关操作, 确保应用补丁后可以正确通过编译以及正常的运行主要功能，而不会修改官方代码所带来的问题。
+本仓库仅做 MSVC 环境兼容的相关操作, 确保应用补丁后可以正确通过编译以及正常的运行主要功能，而不会修改来自上游的问题。
 
 第一版补丁自 vcpkg 的相关 ports 修改而来。
 
 ## 补丁支持状态
 
-Update to 2025-04-23
+Update to 2025-09-25
 
 ```md
 # idevicerestore
-  - a5905b7(2025-03-27 01:52:20)
-  - Fix iPhone 16e restore from normal mode
+  - eda43ac(2025-09-23 00:07:28)
+  - Fix progress bar for DFU/Recovery image upload
 # libimobiledevice
-  - a6b6c35(2025-02-28 13:22:09)
-  - tool/afcclient: Fix local file name error on pulling folder from device
+  - 54f6437(2025-09-08 00:16:19)
+  - Add FUNDING
 # libimobiledevice-glue
-  - c915351(2025-03-01 14:48:09)
-  - socket: Use a backwards-compatible way to deal with , before __VA_ARGS__
+  - 0779631(2025-09-08 00:14:41)
+  - Add FUNDING
 # libirecovery
-  - 638056a(2025-03-20 16:01:33)
-  - Add support for all March 2025 Apple devices
+  - 23f201d(2025-09-12 11:28:13)
+  - Update NEWS for release
 # libplist
-  - d031e94(2025-04-06 12:38:45)
-  - C++: Data: Add const char* constructor
+  - 91ba426(2025-09-12 12:44:39)
+  - Fix proper use of calloc
 # libtatsu
-  - 7e1647b(2024-12-27 01:52:31)
-  - Add extern "C" guards to public headers
+  - 60a39f3(2025-09-22 22:56:37)
+  - tss: Update client version and add Ap,Timestamp
 # libusbmuxd
-  - 19d6bec(2025-02-16 23:48:32)
-  - inetcat: Make sure to report correct error messages
+  - 93eb168(2025-09-08 00:15:01)
+  - Add FUNDING
 ```
 
 ## 构建需要
