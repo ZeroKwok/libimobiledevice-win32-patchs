@@ -182,6 +182,7 @@ if(LIBIMOBILEDEVICE_BUILD_TOOLS)
     add_tool(idevicescreenshot "tools/idevicescreenshot.c")
     add_tool(idevicesetlocation "tools/idevicesetlocation.c")
     add_tool(idevicesyslog "tools/idevicesyslog.c")
+    add_tool(afcclient "tools/afcclient.c")
 
     install(
         TARGETS
@@ -205,6 +206,7 @@ if(LIBIMOBILEDEVICE_BUILD_TOOLS)
             idevicescreenshot
             idevicesetlocation
             idevicesyslog
+            afcclient
         RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
     )
 endif()
