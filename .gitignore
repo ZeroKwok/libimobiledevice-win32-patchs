@@ -1,6 +1,8 @@
 bin/
 build/
+vcpkg_installed/
 .vs/
 .vscode/
 patch-cli.sh
 patch-status.txt
+CMakeUserPresets.json
