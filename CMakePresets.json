@@ -1,0 +1,52 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "base",
+            "description": "Base configuration inherited by all presets.",
+            "hidden": true,
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_PREFIX_PATH": "${sourceDir}/installed",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/installed",
+                "PKG_CONFIG_EXECUTABLE": "$env{VCPKG_ROOT}/downloads/tools/msys2/d33df895d441a36d/mingw64/bin/pkg-config.exe",
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+            }
+        },
+        {
+            "name": "msvc14.2-x86",
+            "inherits": "base",
+            "generator": "Visual Studio 17 2022",
+            "architecture": {
+                "value": "Win32",
+                "strategy": "set"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "CMAKE_GENERATOR_TOOLSET": "v142"
+            }
+        },
+        {
+            "name": "msvc14.2-x64",
+            "inherits": "msvc14.2-x86"
+        }
+    ],
+    "buildPresets": [
+        {
+            "hidden": true,
+            "name": "msvc14.2-x86-debug",
+            "displayName": "msvc14.2-x86-debug",
+            "configurePreset": "msvc14.2-x86",
+            "configuration": "Debug",
+            "jobs": 8
+        },
+        {
+            "hidden": true,
+            "name": "msvc14.2-x64-debug",
+            "displayName": "msvc14.2-x64-debug",
+            "configurePreset": "msvc14.2-x64",
+            "configuration": "Debug",
+            "jobs": 8
+        }
+    ]
+}
