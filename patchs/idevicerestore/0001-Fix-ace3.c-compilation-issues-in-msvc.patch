@@ -1,6 +1,6 @@
-From a7d009defadf07536c6863fd4e511811a95baf83 Mon Sep 17 00:00:00 2001
+From 482cb39ebd58e96ac7691907fbd8f1417e3a2721 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Thu, 25 Sep 2025 16:16:22 +0800
+Date: Wed, 4 Feb 2026 10:38:06 +0800
 Subject: [PATCH 1/8] Fix ace3.c compilation issues in msvc
 
 ---

@@ -1,6 +1,6 @@
-From 23ec60691630cae9f1dd491529dd36c67e035992 Mon Sep 17 00:00:00 2001
+From 28ebc99f5d5035bfe94a3a316ce719e4f5e6a71f Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Thu, 25 Sep 2025 16:17:11 +0800
+Date: Wed, 4 Feb 2026 10:38:07 +0800
 Subject: [PATCH 4/8] Fix ftab.c compilation issues in msvc
 
 ---

@@ -1,10 +1,10 @@
+#include <stdint.h>
 #include <Windows.h>
+#include <winsock.h>
 
 inline int gettimeofday(struct timeval *tv, struct timezone *tz)
 {
-	// 定义FILETIME结构体
 	FILETIME ft;
-	// 获取当前系统时间
 	GetSystemTimeAsFileTime(&ft);
 
 	// 将FILETIME结构体中的时间值转换为64位整数，单位为100纳秒

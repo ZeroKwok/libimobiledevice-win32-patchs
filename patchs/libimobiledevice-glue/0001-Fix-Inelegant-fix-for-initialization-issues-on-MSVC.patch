@@ -1,6 +1,6 @@
-From fda10cb415f14e23997e68250a6c8794ed463fcf Mon Sep 17 00:00:00 2001
+From 52011bf686073f05cd3971de2798949ca0395e84 Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Thu, 25 Sep 2025 18:12:35 +0800
+Date: Wed, 4 Feb 2026 10:13:53 +0800
 Subject: [PATCH] Fix: Inelegant fix for initialization issues on MSVC
 
 ---

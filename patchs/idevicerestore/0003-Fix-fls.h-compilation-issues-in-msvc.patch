@@ -1,6 +1,6 @@
-From 556db4c485df9801420224024ca33f409e33f279 Mon Sep 17 00:00:00 2001
+From 3e07645ebc4ced4369d98cc3debb5931072fc2dd Mon Sep 17 00:00:00 2001
 From: zero <zero.kwok@foxmail.com>
-Date: Thu, 25 Sep 2025 16:16:57 +0800
+Date: Wed, 4 Feb 2026 10:38:07 +0800
 Subject: [PATCH 3/8] Fix fls.h compilation issues in msvc
 
 ---

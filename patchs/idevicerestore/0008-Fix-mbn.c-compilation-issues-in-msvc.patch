@@ -1,0 +1,42 @@
+From 156f91c3ea30579af757757708f4161fa3c34982 Mon Sep 17 00:00:00 2001
+From: zero <zero.kwok@foxmail.com>
+Date: Wed, 4 Feb 2026 10:44:50 +0800
+Subject: [PATCH 8/8] Fix mbn.c compilation issues in msvc
+
+---
+ src/mbn.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/mbn.c b/src/mbn.c
+index 8d9f7a4..e9546b7 100644
+--- a/src/mbn.c
++++ b/src/mbn.c
+@@ -187,8 +187,11 @@ static int mbn_is_64bit_elf(const uint8_t* e_ident)
+ 	return e_ident[EI_CLASS] == ELFCLASS64;
+ }
+ 
+-void* mbn_stitch(const void* data, size_t data_size, const void* blob, size_t blob_size)
++void* mbn_stitch(const void* pdata, size_t data_size, const void* pblob, size_t blob_size)
+ {
++	const char* data = (const char*)pdata;
++	const char* blob = (const char*)pdata;
++
+ 	if (!data) {
+ 		logger(LL_ERROR, "%s: data is NULL\n", __func__);
+ 		return NULL;
+@@ -322,8 +325,11 @@ static void mbn_v7_log_header(const mbn_v7_header* header, const char* func, con
+ 	);
+ }
+ 
+-void* mbn_mav25_stitch(const void* data, size_t data_size, const void* blob, size_t blob_size)
++void* mbn_mav25_stitch(const void* pdata, size_t data_size, const void* pblob, size_t blob_size)
+ {
++	const char* data = (const char*)pdata;
++	const char* blob = (const char*)pdata;
++
+ 	if (!data) {
+ 		logger(LL_ERROR, "%s: data is NULL\n", __func__);
+ 		return NULL;
+-- 
+2.40.1.windows.1
+
